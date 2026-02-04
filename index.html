@@ -1,128 +1,369 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Surat Yuklash | Premium</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #0f172a, #020617 70%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e5e7eb;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(14px);
-      border-radius: 24px;
-      padding: 32px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-      animation: fadeUp 0.8s ease;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 1.7rem;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-size: 0.95rem;
-      color: #9ca3af;
-      margin-bottom: 24px;
-    }
-
-    .upload {
-      border: 2px dashed #38bdf8;
-      border-radius: 18px;
-      padding: 28px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .upload:hover {
-      background: rgba(56,189,248,0.08);
-      transform: scale(1.02);
-    }
-
-    .upload strong {
-      display: block;
-      font-size: 1rem;
-      color: #e5e7eb;
-    }
-
-    .upload span {
-      display: block;
-      margin-top: 6px;
-      font-size: 0.8rem;
-      color: #38bdf8;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
-    img {
-      margin-top: 22px;
-      width: 100%;
-      border-radius: 18px;
-      display: none;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 0.75rem;
-      color: #6b7280;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Rasm Yuklash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #f8fafc;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            border-radius: 24px 24px 0 0;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .upload-area {
+            border: 2px dashed #3b82f6;
+            border-radius: 20px;
+            padding: 50px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(30, 41, 59, 0.5);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .upload-area:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+        
+        .upload-area.dragover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: #8b5cf6;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+        
+        .upload-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .preview-container {
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .preview-title {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .preview-title i {
+            color: #60a5fa;
+        }
+        
+        #preview {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: block;
+            max-height: 400px;
+            object-fit: contain;
+            background: #1e293b;
+        }
+        
+        .image-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #2563eb, #4f46e5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(71, 85, 105, 0.5);
+            color: #cbd5e1;
+            border: 1px solid rgba(100, 116, 139, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid rgba(100, 116, 139, 0.2);
+            padding-top: 20px;
+        }
+        
+        .portfolio-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        
+        .portfolio-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+            
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>📸 Surat yuklash</h1>
-    <p>Rasm tanlang va darhol ko‘ring</p>
-
-    <label class="upload">
-      <strong>Rasm tanlash</strong>
-      <span>PNG · JPG · JPEG</span>
-      <input type="file" accept="image/*" onchange="previewImage(event)">
+<div class="container">
+    <h1><i class="fas fa-cloud-upload-alt"></i> Rasm Yuklash</h1>
+    <p class="subtitle">Yuqori sifatli rasm yuklash uchun platforma. Faqat bitta faylni tanlang yoki bu erga sudrab tashlang</p>
+    
+    <label class="upload-area" id="uploadLabel">
+        <div class="upload-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <div class="upload-text">Rasm tanlash yoki sudrab tashish</div>
+        <div class="upload-subtext">PNG, JPG yoki JPEG formatlari (Maks. 5MB)</div>
+        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg">
     </label>
+    
+    <div class="preview-container" id="previewContainer">
+        <div class="preview-title">
+            <i class="fas fa-image"></i> Rasm ko'rinishi
+        </div>
+        <img id="preview" src="" alt="Yuklangan rasm ko'rinishi">
+        <div class="image-info">
+            <span id="fileName">Fayl nomi: -</span>
+            <span id="fileSize">Hajmi: -</span>
+        </div>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-secondary" id="clearBtn">
+            <i class="fas fa-trash-alt"></i> Tozalash
+        </button>
+        <button class="btn btn-primary" id="downloadBtn">
+            <i class="fas fa-download"></i> Yuklab olish
+        </button>
+    </div>
+    
+    <footer>
+        © 2023 Portfolio loyihasi. Barcha huquqlar himoyalangan.
+        <a href="#" class="portfolio-link">Portfolio'ga qaytish</a>
+    </footer>
+</div>
 
-    <img id="preview" alt="Preview">
-
-    <footer>© 2026 · Premium Upload UI</footer>
-  </div>
-
-  <script>
-    function previewImage(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const img = document.getElementById("preview");
-      img.src = URL.createObjectURL(file);
-      img.style.display = "block";
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadLabel = document.getElementById('uploadLabel');
+    const preview = document.getElementById('preview');
+    const previewContainer = document.getElementById('previewContainer');
+    const clearBtn = document.getElementById('clearBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    
+    // Fayl tanlash
+    uploadLabel.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    // Faylni qayta ishlash
+    fileInput.addEventListener('change', (event) => {
+        handleFile(event.target.files[0]);
+    });
+    
+    // Drag & Drop qo'llab-quvvatlash
+    uploadLabel.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadLabel.classList.add('dragover');
+    });
+    
+    uploadLabel.addEventListener('dragleave', () => {
+        uploadLabel.classList.remove('dragover');
+    });
+    
+    uploadLabel.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadLabel.classList.remove('dragover');
+        
+        if (e.dataTransfer.files.length) {
+            handleFile(e.dataTransfer.files[0]);
+            fileInput.files = e.dataTransfer.files;
+        }
+    });
+    
+    // Faylni ko'rsatish
+    function handleFile(file) {
+        if (!file || !file.type.match('image.*')) {
+            alert('Iltimos, faqat rasm fayllarini tanlang (PNG, JPG, JPEG)');
+            return;
+        }
+        
+        if (file.size > 5 * 1024 * 1024) {
+            alert('Fayl hajmi 5MB dan katta. Iltimos, kichikroq fayl tanlang.');
+            return;
+        }
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewContainer.style.display = 'block';
+            fileName.textContent = `Fayl nomi: ${file.name}`;
+            fileSize.textContent = `Hajmi: ${formatFileSize(file.size)}`;
+            
+            // Scroll to preview
+            previewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+        
+        reader.readAsDataURL(file);
     }
-  </script>
+    
+    // Fayl hajmini formatlash
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // Tozalash tugmasi
+    clearBtn.addEventListener('click', () => {
+        fileInput.value = '';
+        preview.src = '';
+        previewContainer.style.display = 'none';
+        fileName.textContent = 'Fayl nomi: -';
+        fileSize.textContent = 'Hajmi: -';
+    });
+    
+    // Yuklab olish tugmasi
+    downloadBtn.addEventListener('click', () => {
+        if (!preview.src || preview.src.startsWith('data:')) {
+            const link = document.createElement('a');
+            link.href = preview.src;
+            link.download = 'yuklangan_rasm_' + new Date().getTime() + '.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('Iltimos, avval rasm yuklang');
+        }
+    });
+</script>
 
 </body>
 </html>
