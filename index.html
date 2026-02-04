@@ -13,6 +13,7 @@
             --success: #06d6a0;
             --danger: #ef476f;
             --dark: #0f172a;
+            --darker: #0a0f1c;
             --light: #f8f9fa;
             --gray: #64748b;
             --gray-light: #e2e8f0;
@@ -31,7 +32,7 @@
         
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #1a202c 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -41,71 +42,79 @@
             overflow-x: hidden;
         }
         
-        /* Background animatsiyasi */
+        /* Background animatsiyasi - tuzatilgan */
         .bg-animation {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.3;
+            opacity: 0.2;
+            overflow: hidden;
         }
         
         .bg-circle {
             position: absolute;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            animation: float 20s infinite linear;
+            animation: float 25s infinite linear;
+            filter: blur(40px);
         }
         
         .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
             animation-delay: 0s;
+            opacity: 0.3;
         }
         
         .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 15%;
-            right: 10%;
-            animation-delay: 5s;
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: -50px;
+            animation-delay: 10s;
             background: linear-gradient(45deg, var(--success), var(--primary));
+            opacity: 0.2;
         }
         
         .circle-3 {
-            width: 150px;
-            height: 150px;
-            top: 50%;
-            left: 80%;
-            animation-delay: 10s;
+            width: 250px;
+            height: 250px;
+            top: 40%;
+            left: 70%;
+            animation-delay: 5s;
             background: linear-gradient(45deg, var(--secondary), var(--danger));
+            opacity: 0.25;
         }
         
         @keyframes float {
             0% {
-                transform: translate(0, 0) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg) scale(1);
             }
-            33% {
-                transform: translate(30px, -50px) rotate(120deg);
+            25% {
+                transform: translate(50px, -80px) rotate(90deg) scale(1.1);
             }
-            66% {
-                transform: translate(-20px, 40px) rotate(240deg);
+            50% {
+                transform: translate(-30px, 60px) rotate(180deg) scale(0.9);
+            }
+            75% {
+                transform: translate(-70px, -40px) rotate(270deg) scale(1.05);
             }
             100% {
-                transform: translate(0, 0) rotate(360deg);
+                transform: translate(0, 0) rotate(360deg) scale(1);
             }
         }
         
         .container {
             width: 100%;
-            max-width: 600px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 650px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--border-radius);
             padding: 40px;
             text-align: center;
@@ -116,18 +125,13 @@
             transition: var(--transition);
         }
         
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        }
-        
         .container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary), var(--success));
             border-radius: var(--border-radius) var(--border-radius) 0 0;
             z-index: 2;
@@ -138,77 +142,69 @@
         }
         
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 28px;
+            font-size: 32px;
             color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
             transition: var(--transition);
         }
         
-        .logo:hover {
-            transform: scale(1.1) rotate(15deg);
-        }
-        
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 10px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
         
         .subtitle {
             font-size: 1.1rem;
             color: var(--gray-light);
-            margin-bottom: 10px;
             line-height: 1.6;
             opacity: 0.9;
         }
         
         .upload-section {
-            margin: 30px 0;
+            margin: 35px 0;
         }
         
         .upload-area {
             border: 3px dashed var(--primary);
             border-radius: var(--border-radius);
-            padding: 60px 30px;
+            padding: 50px 30px;
             cursor: pointer;
             transition: var(--transition);
-            background: rgba(30, 41, 59, 0.5);
+            background: rgba(30, 41, 59, 0.4);
             position: relative;
-            overflow: hidden;
         }
         
         .upload-area:hover {
-            background: rgba(30, 41, 59, 0.8);
+            background: rgba(30, 41, 59, 0.7);
             border-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            transform: translateY(-2px);
         }
         
         .upload-area.dragover {
-            background: rgba(67, 97, 238, 0.15);
+            background: rgba(67, 97, 238, 0.2);
             border-color: var(--success);
             animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.3);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
+                box-shadow: 0 0 0 20px rgba(67, 97, 238, 0);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
@@ -216,34 +212,22 @@
         }
         
         .upload-icon {
-            font-size: 60px;
+            font-size: 54px;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: var(--transition);
         }
         
-        .upload-area:hover .upload-icon {
-            color: var(--secondary);
-            transform: scale(1.1);
-        }
-        
         .upload-text {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--light);
         }
         
         .upload-subtext {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--gray-light);
-            margin-bottom: 5px;
-        }
-        
-        .upload-hint {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-top: 15px;
         }
         
         input[type="file"] {
@@ -251,7 +235,7 @@
         }
         
         .preview-section {
-            margin: 30px 0;
+            margin: 35px 0;
             display: none;
             animation: fadeIn 0.5s ease;
         }
@@ -259,7 +243,7 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -268,47 +252,61 @@
         }
         
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--light);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
             display: flex;
             align-items: center;
             gap: 10px;
             padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .section-title i {
             color: var(--primary);
         }
         
-        #preview {
-            width: 100%;
+        .preview-container {
+            position: relative;
             border-radius: 12px;
-            box-shadow: var(--shadow);
-            display: block;
-            max-height: 350px;
-            object-fit: cover;
-            background: #1e293b;
+            overflow: hidden;
+            background: var(--dark);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
+            min-height: 200px;
         }
         
-        #preview:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        #preview {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+            background: var(--dark);
+        }
+        
+        .no-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: var(--gray);
+        }
+        
+        .no-preview i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
         }
         
         .file-info {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(30, 41, 59, 0.6);
             padding: 20px;
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .info-item {
@@ -316,7 +314,7 @@
         }
         
         .info-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gray);
             margin-bottom: 5px;
             display: flex;
@@ -325,60 +323,74 @@
         }
         
         .info-value {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--light);
             font-weight: 600;
+            word-break: break-all;
         }
         
         .actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
         
         .btn {
-            padding: 18px 25px;
+            padding: 16px 20px;
             border: none;
-            border-radius: var(--border-radius);
-            font-weight: 700;
+            border-radius: 12px;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            letter-spacing: 0.5px;
+            gap: 10px;
             position: relative;
             overflow: hidden;
         }
         
-        .btn::before {
+        .btn::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
         }
         
-        .btn:hover::before {
-            left: 100%;
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(40, 40);
+                opacity: 0;
+            }
         }
         
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), #2f4fcd);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(67, 97, 238, 0.4);
         }
         
         .btn-secondary {
@@ -389,7 +401,7 @@
         
         .btn-secondary:hover {
             background: rgba(71, 85, 105, 0.9);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: var(--primary);
             color: white;
         }
@@ -397,59 +409,44 @@
         .btn-success {
             background: linear-gradient(135deg, var(--success), #05b888);
             color: white;
-            box-shadow: 0 10px 20px rgba(6, 214, 160, 0.3);
+            box-shadow: 0 8px 20px rgba(6, 214, 160, 0.3);
         }
         
         .btn-success:hover {
             background: linear-gradient(135deg, #05b888, #04a075);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(6, 214, 160, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(6, 214, 160, 0.4);
         }
         
         .btn-danger {
             background: linear-gradient(135deg, var(--danger), #d43a5e);
             color: white;
-            box-shadow: 0 10px 20px rgba(239, 71, 111, 0.3);
+            box-shadow: 0 8px 20px rgba(239, 71, 111, 0.3);
         }
         
         .btn-danger:hover {
             background: linear-gradient(135deg, #d43a5e, #b93252);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(239, 71, 111, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(239, 71, 111, 0.4);
         }
         
         .btn:disabled {
-            opacity: 0.6;
+            opacity: 0.5;
             cursor: not-allowed;
             transform: none !important;
-        }
-        
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            box-shadow: none !important;
         }
         
         .progress-container {
-            display: none;
             margin: 20px 0;
+            display: none;
         }
         
         .progress-bar {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 4px;
             overflow: hidden;
             margin-bottom: 10px;
         }
@@ -458,21 +455,23 @@
             height: 100%;
             background: linear-gradient(90deg, var(--primary), var(--success));
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.5s ease;
+            border-radius: 4px;
         }
         
         .progress-text {
             text-align: center;
             font-size: 0.9rem;
             color: var(--gray);
+            font-weight: 500;
         }
         
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 0.9rem;
             color: var(--gray);
-            border-top: 1px solid rgba(100, 116, 139, 0.2);
             padding-top: 20px;
+            border-top: 1px solid rgba(100, 116, 139, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -483,7 +482,7 @@
         .portfolio-link {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             padding: 8px 16px;
             border-radius: 8px;
             background: rgba(67, 97, 238, 0.1);
@@ -500,20 +499,21 @@
         
         .notification {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            padding: 15px 25px;
-            border-radius: var(--border-radius);
+            top: 25px;
+            right: 25px;
+            padding: 15px 20px;
+            border-radius: 12px;
             color: white;
             font-weight: 600;
             box-shadow: var(--shadow);
             z-index: 1000;
-            transform: translateX(150%);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
             align-items: center;
             gap: 12px;
-            max-width: 400px;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
         }
         
         .notification.show {
@@ -521,18 +521,18 @@
         }
         
         .notification.success {
-            background: linear-gradient(135deg, var(--success), #05b888);
-            border-left: 5px solid #04a075;
+            background: rgba(6, 214, 160, 0.9);
+            border-left: 4px solid #04a075;
         }
         
         .notification.error {
-            background: linear-gradient(135deg, var(--danger), #d43a5e);
-            border-left: 5px solid #b93252;
+            background: rgba(239, 71, 111, 0.9);
+            border-left: 4px solid #b93252;
         }
         
         .notification.info {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-left: 5px solid #2f4fcd;
+            background: rgba(67, 97, 238, 0.9);
+            border-left: 4px solid #2f4fcd;
         }
         
         @media (max-width: 768px) {
@@ -542,7 +542,7 @@
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             
             .upload-area {
@@ -560,6 +560,17 @@
             footer {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .notification {
+                max-width: 90%;
+                left: 50%;
+                transform: translateX(50%) translateY(-100px);
+                right: auto;
+            }
+            
+            .notification.show {
+                transform: translateX(-50%) translateY(0);
             }
         }
     </style>
@@ -591,8 +602,7 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                 </div>
                 <div class="upload-text">Rasm tanlash yoki sudrab tashish</div>
-                <div class="upload-subtext">Qo'llab-quvvatlanadigan formatlar: PNG, JPG, JPEG, WEBP</div>
-                <div class="upload-hint">Maksimal hajmi: 10MB</div>
+                <div class="upload-subtext">PNG, JPG, JPEG, WEBP • Maksimal hajmi: 10MB</div>
                 <input type="file" id="fileInput" accept="image/*">
             </label>
         </div>
@@ -610,7 +620,14 @@
             <div class="section-title">
                 <i class="fas fa-image"></i> Yuklangan rasm
             </div>
-            <img id="preview" src="" alt="Yuklangan rasm ko'rinishi">
+            
+            <div class="preview-container">
+                <img id="preview" src="" alt="Yuklangan rasm" onerror="this.style.display='none'; document.getElementById('noPreview').style.display='flex';">
+                <div class="no-preview" id="noPreview">
+                    <i class="fas fa-image"></i>
+                    <p>Rasm ko'rsatilmayapti</p>
+                </div>
+            </div>
             
             <div class="file-info">
                 <div class="info-item">
@@ -641,291 +658,584 @@
         </div>
         
         <!-- Amallar paneli -->
-        <div class="actions">
-            <button class="btn btn-danger" id="clearBtn">
-                <i class="fas fa-trash-alt"></i> Tozalash
-            </button>
-            <button class="btn btn-success" id="downloadBtn" disabled>
-                <i class="fas fa-download"></i> Yuklab Olish
-            </button>
-            <button class="btn btn-primary" id="shareBtn" disabled>
-                <i class="fas fa-share-alt"></i> Ulashish
-            </button>
-        </div>
-        
-        <!-- Footer -->
-        <footer>
-            <div>
-                <i class="far fa-copyright"></i> 2024 Portfolio Platformasi. Barcha huquqlar himoyalangan.
+                </div>
+    </div>
+
+    <!-- Yana qo'shimcha funksiyalar uchun modal oynalar -->
+    <div class="modal" id="imageSettingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-sliders-h"></i> Rasm Sozlamalari</h3>
+                <button class="close-modal" onclick="closeModal('imageSettingsModal')">&times;</button>
             </div>
-            <a href="https://github.com/rjsresulo" target="_blank" class="portfolio-link">
-                <i class="fab fa-githu            text-align: center;
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="imageQuality"><i class="fas fa-compress-alt"></i> Sifat</label>
+                    <div class="slider-container">
+                        <input type="range" id="imageQuality" min="0.1" max="1" step="0.1" value="1">
+                        <span id="qualityValue">100%</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label for="imageFormat"><i class="fas fa-file-image"></i> Format</label>
+                    <select id="imageFormat">
+                        <option value="original">Original</option>
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WEBP</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="imageWidth"><i class="fas fa-arrows-alt-h"></i> Kenglik (px)</label>
+                    <input type="number" id="imageWidth" min="50" max="5000" value="800">
+                </div>
+                <div class="setting-group">
+                    <label for="imageHeight"><i class="fas fa-arrows-alt-v"></i> Balandlik (px)</label>
+                    <input type="number" id="imageHeight" min="50" max="5000" value="600">
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="preserveAspectRatio" checked>
+                        <i class="fas fa-expand-alt"></i> Nisbatni saqlash
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('imageSettingsModal')">Bekor qilish</button>
+                <button class="btn btn-primary" onclick="applyImageSettings()">Qo'llash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rasmni qirqish uchun modal -->
+    <div class="modal" id="cropModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-crop-alt"></i> Rasmni Qirqish</h3>
+                <button class="close-modal" onclick="closeModal('cropModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="crop-container" id="cropContainer">
+                    <div class="crop-area">
+                        <img id="cropImage" src="" alt="Qirqish uchun rasm">
+                        <div class="crop-overlay"></div>
+                    </div>
+                    <div class="crop-controls">
+                        <button class="btn btn-small" onclick="rotateImage(-90)"><i class="fas fa-undo"></i></button>
+                        <button class="btn btn-small" onclick="rotateImage(90)"><i class="fas fa-redo"></i></button>
+                        <button class="btn btn-small" onclick="resetCrop()"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('cropModal')">Bekor qilish</button>
+                <button class="btn btn-success" onclick="applyCrop()">Qirqishni qo'llash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Qo'shimcha CSS -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 28px;
+            cursor: pointer;
             transition: var(--transition);
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
-        
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
         }
-        
-        .container::before {
-            content: '';
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+        }
+
+        .setting-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            color: var(--light);
+            font-weight: 500;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .setting-group select,
+        .setting-group input[type="number"] {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .setting-group input[type="checkbox"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .crop-container {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            background: var(--darker);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .crop-area {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #cropImage {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .crop-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--success));
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            z-index: 2;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px dashed var(--primary);
         }
-        
-        .header {
-            margin-bottom: 30px;
+
+        .crop-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 8px;
         }
-        
-        .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        /* Qo'shimcha tugmalar uchun */
+        .extra-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .extra-btn {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .extra-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Statistik ma'lumotlar */
+        .stats-container {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Dark/Light mode toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
             color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
-            transition: var(--transition);
-        }
-        
-        .logo:hover {
-            transform: scale(1.1) rotate(15deg);
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-light);
-            margin-bottom: 10px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .upload-section {
-            margin: 30px 0;
-        }
-        
-        .upload-area {
-            border: 3px dashed var(--primary);
-            border-radius: var(--border-radius);
-            padding: 60px 30px;
             cursor: pointer;
-            transition: var(--transition);
-            background: rgba(30, 41, 59, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .upload-area:hover {
-            background: rgba(30, 41, 59, 0.8);
-            border-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .upload-area.dragover {
-            background: rgba(67, 97, 238, 0.15);
-            border-color: var(--success);
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
-            }
-        }
-        
-        .upload-icon {
-            font-size: 60px;
-            color: var(--primary);
-            margin-bottom: 20px;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
         }
-        
-        .upload-area:hover .upload-icon {
-            color: var(--secondary);
+
+        .theme-toggle:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
-        
-        .upload-text {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--light);
+    </style>
+
+    <!-- Qo'shimcha JavaScript funksiyalari -->
+    <script>
+        // Modal oynalarni boshqarish
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
         }
-        
-        .upload-subtext {
-            font-size: 1rem;
-            color: var(--gray-light);
-            margin-bottom: 5px;
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
         }
-        
-        .upload-hint {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-top: 15px;
-        }
-        
-        input[type="file"] {
-            display: none;
-        }
-        
-        .preview-section {
-            margin: 30px 0;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+
+        // Rasm sozlamalari
+        const imageQuality = document.getElementById('imageQuality');
+        const qualityValue = document.getElementById('qualityValue');
+        const preserveAspectRatio = document.getElementById('preserveAspectRatio');
+
+        imageQuality.addEventListener('input', function() {
+            qualityValue.textContent = Math.round(this.value * 100) + '%';
+        });
+
+        // Rasm o'lchamini o'zgartirish
+        const imageWidth = document.getElementById('imageWidth');
+        const imageHeight = document.getElementById('imageHeight');
+
+        let originalAspectRatio = 1;
+
+        function applyImageSettings() {
+            if (!uploadedFile || !uploadedImageData) {
+                showNotification('Iltimos, avval rasm yuklang', 'error');
+                return;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            img.onload = function() {
+                const width = parseInt(imageWidth.value);
+                const height = parseInt(imageHeight.value);
+                const quality = parseFloat(imageQuality.value);
+                
+                if (preserveAspectRatio.checked) {
+                    const aspectRatio = img.width / img.height;
+                    if (width / height > aspectRatio) {
+                        canvas.width = Math.round(height * aspectRatio);
+                        canvas.height = height;
+                    } else {
+                        canvas.width = width;
+                        canvas.height = Math.round(width / aspectRatio);
+                    }
+                } else {
+                    canvas.width = width;
+                    canvas.height = height;
+                }
+
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                const format = document.getElementById('imageFormat').value;
+                let mimeType = 'image/png';
+                let extension = 'png';
+                
+                if (format === 'jpeg') {
+                    mimeType = 'image/jpeg';
+                    extension = 'jpg';
+                } else if (format === 'webp') {
+                    mimeType = 'image/webp';
+                    extension = 'webp';
+                }
+
+                uploadedImageData = canvas.toDataURL(mimeType, quality);
+                preview.src = uploadedImageData;
+                
+                // Fayl ma'lumotlarini yangilash
+                const dataUrl = canvas.toDataURL(mimeType, quality);
+                const byteString = atob(dataUrl.split(',')[1]);
+                fileSize.textContent = formatFileSize(byteString.length);
+                fileDimensions.textContent = `${canvas.width} × ${canvas.height} px`;
+
+                closeModal('imageSettingsModal');
+                showNotification('Rasm sozlamalari qo\'llandi', 'success');
+            };
+
+            img.src = uploadedImageData;
+        }
+
+        // Rasmni qirqish funksiyalari
+        let currentRotation = 0;
+
+        function rotateImage(degrees) {
+            currentRotation += degrees;
+            const img = document.getElementById('cropImage');
+            img.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+        }
+
+        function resetCrop() {
+            currentRotation = 0;
+            const img = document.getElementById('cropImage');
+            img.style.transform = 'translate(-50%, -50%) rotate(0deg)';
+        }
+
+        function openCropModal() {
+            if (!uploadedFile || !uploadedImageData) {
+                showNotification('Iltimos, avval rasm yuklang', 'error');
+                return;
             }
+
+            document.getElementById('cropImage').src = uploadedImageData;
+            openModal('cropModal');
         }
-        
-        .section-title {
-            font-size: 1.3rem;
-            color: var(--light);
-            margin-bottom: 20px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+
+        function applyCrop() {
+            // Bu erda haqiqiy qirqish logikasi bo'lishi kerak
+            // Hozircha demo sifatida
+            closeModal('cropModal');
+            showNotification('Rasm qirqish funksiyasi tez orada qo\'shiladi', 'info');
         }
-        
-        .section-title i {
-            color: var(--primary);
-        }
-        
-        #preview {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            display: block;
-            max-height: 350px;
-            object-fit: cover;
-            background: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-        
-        #preview:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
-        .file-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-            background: rgba(30, 41, 59, 0.7);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .info-item {
-            text-align: left;
-        }
-        
-        .info-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .info-value {
-            font-size: 1.1rem;
-            color: var(--light);
-            font-weight: 600;
-        }
-        
-        .actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .btn {
-            padding: 18px 25px;
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
-            transform: translate
+
+        // Qo'shimcha amallar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Qo'shimcha tugmalar
+            const extraActions = document.createElement('div');
+            extraActions.className = 'extra-actions';
+            extraActions.innerHTML = `
+                <button class="extra-btn" onclick="openModal('imageSettingsModal')">
+                    <i class="fas fa-sliders-h"></i> Sozlamalar
+                </button>
+                <button class="extra-btn" onclick="openCropModal()">
+                    <i class="fas fa-crop-alt"></i> Qirqish
+                </button>
+                <button class="extra-btn" onclick="addWatermark()">
+                    <i class="fas fa-water"></i> Watermark
+                </button>
+                <button class="extra-btn" onclick="convertToGrayscale()">
+                    <i class="fas fa-adjust"></i> Kulrang
+                </button>
+                <button class="extra-btn" onclick="compressImage()">
+                    <i class="fas fa-compress-alt"></i> Siquvchi
+                </button>
+            `;
+
+            // Statistik ma'lumotlar
+            const statsContainer = document.createElement('div');
+            statsContainer.className = 'stats-container';
+            statsContainer.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value" id="totalUploads">0</div>
+                    <div class="stat-label">Jami Yuklashlar</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalSize">0 MB</div>
+                    <div class="stat-label">Jami Hajm</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="todayUploads">0</div>
+                    <div class="stat-label">Bugun Yuklangan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="successRate">100%</div>
+                    <div class="stat-label">Muvaffaqiyat</div>
+                </div>
+            `;
+
+            // Container ichiga qo'shish
+            const container = document.querySelector('.container');
+            container.insertBefore(extraActions, document.querySelector('footer'));
+            container.insertBefore(statsContainer, document.querySelector('footer'));
+
+            // Theme toggle
+            const themeToggle = document.createElement('div');
+            themeToggle.className = 'theme-toggle';
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            themeToggle.onclick = toggleTheme;
+            document.body.appendChild(themeToggle);
+        });
+
+        // Watermark qo'shish
+        function addWatermark() {
+            if (!uploadedFile || !uploadedImageData) {
+                showNotification('Iltimos, avval rasm yuklang', 'error');
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+
+                // Watermark matni
+                ctx.font = 'bold 48px Arial';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                // Diagonal watermark
+                ctx.save();
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate(-Math.PI / 4);
+                
+                for (let i = -2; i <= 2; i++) {
+                    for (let j = -2; j <= 2; j++) {
+                        ctx.fillText('PORTFOLIO', i * 400, j * 200);
+                    }
+                }
+                
+                ctx.restore();
+
+                // Burchakda watermark
+                ctx.font = 'bold 24px Arial';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText('@rjsresulo', 20, canvas.height - 20);
+
+                uploadedImageData = canvas.toDataURL();
+                preview.src = uploadedImageData;
+                
+                showNotification('Watermark qo\'shildi', 'success');
+            };
+
+  
