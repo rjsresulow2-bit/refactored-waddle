@@ -377,4 +377,555 @@
         
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(71, 85, 105, 0.6);
+            color: var(--gray-light);
+            border: 2px solid rgba(100, 116, 139, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.9);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #05b888);
+            color: white;
+            box-shadow: 0 10px 20px rgba(6, 214, 160, 0.3);
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #05b888, #04a075);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(6, 214, 160, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #d43a5e);
+            color: white;
+            box-shadow: 0 10px 20px rgba(239, 71, 111, 0.3);
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #d43a5e, #b93252);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(239, 71, 111, 0.4);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            border-top: 1px solid rgba(100, 116, 139, 0.2);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .portfolio-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(67, 97, 238, 0.1);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .portfolio-link:hover {
+            background: rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            color: white;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 400px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background: linear-gradient(135deg, var(--success), #05b888);
+            border-left: 5px solid #04a075;
+        }
+        
+        .notification.error {
+            background: linear-gradient(135deg, var(--danger), #d43a5e);
+            border-left: 5px solid #b93252;
+        }
+        
+        .notification.info {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-left: 5px solid #2f4fcd;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                max-width: 95%;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .upload-area {
+                padding: 40px 20px;
+            }
+            
+            .actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .file-info {
+                grid-template-columns: 1fr;
+            }
+            
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Background animatsiyasi -->
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+    
+    <!-- Asosiy konteyner -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <h1>Rasm Yuklash Platformasi</h1>
+            <p class="subtitle">Yuqori sifatli rasm yuklash va boshqarish uchun professional vosita</p>
+            <p class="subtitle">Faqat bitta faylni tanlang yoki bu erga sudrab tashlang</p>
+        </div>
+        
+        <!-- Yuklash maydoni -->
+        <div class="upload-section">
+            <label class="upload-area" id="uploadLabel">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">Rasm tanlash yoki sudrab tashish</div>
+                <div class="upload-subtext">Qo'llab-quvvatlanadigan formatlar: PNG, JPG, JPEG, WEBP</div>
+                <div class="upload-hint">Maksimal hajmi: 10MB</div>
+                <input type="file" id="fileInput" accept="image/*">
+            </label>
+        </div>
+        
+        <!-- Yuklash progressi -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Yuklanmoqda: 0%</div>
+        </div>
+        
+        <!-- Rasmni ko'rish -->
+        <div class="preview-section" id="previewSection">
+            <div class="section-title">
+                <i class="fas fa-image"></i> Yuklangan rasm
+            </div>
+            <img id="preview" src="" alt="Yuklangan rasm ko'rinishi">
+            
+            <div class="file-info">
+                <div class="info-item">
+                    <div class="info-label">
+                        <i class="fas fa-file-alt"></i> Fayl nomi:
+                    </div>
+                    <div class="info-value" id="fileName">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        <i class="fas fa-weight-hanging"></i> Fayl hajmi:
+                    </div>
+                    <div class="info-value" id="fileSize">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        <i class="fas fa-expand-alt"></i> O'lchami:
+                    </div>
+                    <div class="info-value" id="fileDimensions">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">
+                        <i class="fas fa-calendar-alt"></i> Yuklangan vaqt:
+                    </div>
+                    <div class="info-value" id="fileTime">-</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Amallar paneli -->
+        <div class="actions">
+            <button class="btn btn-danger" id="clearBtn">
+                <i class="fas fa-trash-alt"></i> Tozalash
+            </button>
+            <button class="btn btn-success" id="downloadBtn" disabled>
+                <i class="fas fa-download"></i> Yuklab Olish
+            </button>
+            <button class="btn btn-primary" id="shareBtn" disabled>
+                <i class="fas fa-share-alt"></i> Ulashish
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div>
+                <i class="far fa-copyright"></i> 2024 Portfolio Platformasi. Barcha huquqlar himoyalangan.
+            </div>
+            <a href="https://github.com/rjsresulo" target="_blank" class="portfolio-link">
+                <i class="fab fa-githu            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--success));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            z-index: 2;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .upload-section {
+            margin: 30px 0;
+        }
+        
+        .upload-area {
+            border: 3px dashed var(--primary);
+            border-radius: var(--border-radius);
+            padding: 60px 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(30, 41, 59, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upload-area:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .upload-area.dragover {
+            background: rgba(67, 97, 238, 0.15);
+            border-color: var(--success);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+        
+        .upload-icon {
+            font-size: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .upload-area:hover .upload-icon {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .upload-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+        
+        .upload-subtext {
+            font-size: 1rem;
+            color: var(--gray-light);
+            margin-bottom: 5px;
+        }
+        
+        .upload-hint {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 15px;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .preview-section {
+            margin: 30px 0;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+        #preview {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: block;
+            max-height: 350px;
+            object-fit: cover;
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        #preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .file-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .info-item {
+            text-align: left;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--light);
+            font-weight: 600;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 18px 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
             transform: translate
